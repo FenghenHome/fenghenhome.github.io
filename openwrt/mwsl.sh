@@ -20,8 +20,8 @@ wget -O $TMP1 http://hosts.mwsl.org.cn/hosts
 [ ! -s $TMP1 ] && echo "$TMP1 is empty. Please re-download." && exit
 [ -s $CONFIGFILE ] && rm -f $CONFIGFILE
 
-grep -a -e ^191.101.229.116 $TMP1 | \
-sed -e "s/191.101.229.116 //" \
+grep -a -e ^191.101.231.96 $TMP1 | \
+sed -e "s/191.101.231.96 //" \
  -e "s/^[ \x09]*//;s/[ \x09]*$//" \
  -e "/^$/ d" > $TMP2 
 
