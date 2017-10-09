@@ -5,8 +5,8 @@
 <title>打赏风痕</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
-<link href="css/reward.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<link href="assets/css/reward.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="content">
@@ -21,7 +21,7 @@
             <p>感谢您的支持，我会继续努力的!</p>
         </div>
         <div class="shang_payimg">
-		<img src="img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+		<img src="assets/css/images/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
         </div>
         <div class="pay_explain">扫码打赏，你说多少就多少</div>
         <div class="shang_payselect">
@@ -48,7 +48,7 @@ $(function(){
 	$(".pay_item").click(function(){
 		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
 		var dataid=$(this).attr('data-id');
-		$(".shang_payimg img").attr("src","img/"+dataid+"img.jpg");
+		$(".shang_payimg img").attr("src","assets/css/images/"+dataid+"img.jpg");
 		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
 	});
 });
