@@ -19,7 +19,8 @@ adblock() {
 
 
 ignore() {
-    wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | awk -F\| '/CN\|ipv4/ { printf("%s/%d\n", $4, 32-log($5)/log(2)) }' > ignore.list
+    #wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | awk -F\| '/CN\|ipv4/ { printf("%s/%d\n", $4, 32-log($5)/log(2)) }' > ignore.list
+    wget -4 --no-check-certificate -O ignore.list https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
 }
 
 cnlist
