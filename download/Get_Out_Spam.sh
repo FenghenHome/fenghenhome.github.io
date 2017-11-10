@@ -29,7 +29,7 @@ key_word=(Subject HELO SMTP
     "api.map.baidu.com" "ps.map.baidu.com" "sv.map.baidu.com" "offnavi.map.baidu.com" "newvector.map.baidu.com"
     "ulog.imap.baidu.com" "newloc.map.n.shifen.com" "lbs.map.qq.com" "lbssp.map.qq.com" "apis.map.qq.com"
     "apilocate.amap.com" "restapi.amap.com" "360.cn" "360.com" "360safe.cn"
-    "360safe.com" "yunpan.cn" "yunpan.com" "so.cn" "so.com"
+    "360safe.com" "baidu.com" "baidu.com" "yunpan.cn" "yunpan.com" "so.cn" "so.com"
     "qihoo.cn" "qihoo.com" "360totalsecurity.cn" "360totalsecurity.com"
     "announce.php?passkey=")
 
