@@ -5,7 +5,7 @@ cnlist() {
     wget -4 --no-check-certificate -O bogus-nxdomain.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
     wget -4 --no-check-certificate -O bogus-nxdomain.china.ext.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf
     wget -4 --no-check-certificate -O google.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
-    sed -i "s/114.114.114.114/101.132.183.99/g" *.conf
+    sed -i "s/114.114.114.114/119.23.248.241/g" *.conf
 }
 
 adblock() {
