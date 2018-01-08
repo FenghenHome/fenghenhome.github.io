@@ -13,7 +13,7 @@ FILE=hosts.deny
 
 cd $TMP_DIR
 
-curl --connect-timeout 60 $URL 2> /dev/null | gzip -dc > $FILE 2> /dev/null
+curl --insecure --connect-timeout 60 $URL 2> /dev/null | gzip -dc > $FILE 2> /dev/null
 
 LINES=`grep "^sshd:" $FILE | wc -l`
 
@@ -24,4 +24,3 @@ then
 	cat $FILE >> $HOSTSDENY
 	echo "####SSH BlackList END####" >> $HOSTSDENY
 fi
-
