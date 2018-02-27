@@ -15,7 +15,7 @@ if [ -f $PRIV_FILE ]; then
         rm $PRIV_FILE
 fi
 
-wget -O $TMP1 http://hosts.mwsl.org.cn/hosts
+wget -O $TMP1 http://dn-mwsl-hosts.qbox.me/hosts
 
 [ ! -s $TMP1 ] && echo "$TMP1 is empty. Please re-download." && exit
 [ -s $CONFIGFILE ] && rm -f $CONFIGFILE
