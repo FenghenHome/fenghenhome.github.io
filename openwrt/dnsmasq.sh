@@ -6,6 +6,7 @@ cnlist() {
     wget -4 --no-check-certificate -O bogus-nxdomain.china.ext.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf
     wget -4 --no-check-certificate -O google.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
     wget -4 --no-check-certificate -O apple.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
+    wget -4 --no-check-certificate -O china_ssr.txt https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
     #DNS:pdomo.me、aixyz.com、fundns.cn、onedns.net、baidns.cn
     sed -i "s/114.114.114.114/115.159.146.99/g" *.conf
 }
