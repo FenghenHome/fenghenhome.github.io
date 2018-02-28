@@ -42,6 +42,10 @@ adblock() {
     cat adblock.conf adblock.ext.conf > file.txt
     rm -rf adblock.conf adblock.ext.conf
     mv file.txt adblock.conf
+    bash blockad.sh
+    cat adblock.conf blockad.conf > file.txt
+    rm -rf adblock.conf blockad.conf
+    mv file.txt adblock.conf
     sort -n adblock.conf | uniq
     sort -n adblock.conf | awk '{if($0!=line)print; line=$0}'
     sort -n adblock.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
