@@ -1,12 +1,12 @@
 #!/bin/sh
 rm -rf accelerated-domains.china.conf bogus-nxdomain.china.conf adblock-domains.china.conf ignore-ips.china.conf gfw-domains.china.conf ignore.list
 cnlist() {
-    wget -4 --no-check-certificate -O accelerated-domains.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
-    wget -4 --no-check-certificate -O bogus-nxdomain.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
-    wget -4 --no-check-certificate -O bogus-nxdomain.china.ext.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf
-    wget -4 --no-check-certificate -O google.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
-    wget -4 --no-check-certificate -O apple.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
-    wget -4 --no-check-certificate -O ignore-ips.china.conf https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
+    wget -4 -O accelerated-domains.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
+    wget -4 -O bogus-nxdomain.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
+    wget -4 -O bogus-nxdomain.china.ext.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf
+    wget -4 -O google.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
+    wget -4 -O apple.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
+    wget -4 -O ignore-ips.china.conf https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
 
     # DNS:https://puredns.cn、https://pdomo.me、http://aixyz.com、http://www.fundns.cn、https://www.onedns.net、https://baidns.cn
     sed -i "s/114.114.114.114/123.207.137.88/g" *.conf
@@ -30,11 +30,11 @@ cnlist() {
 }
 
 adblock() {
-    wget -4 --no-check-certificate -O - https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt |
+    wget -4 -O - https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt |
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq > adblock-domains.china.conf
 
-    wget -4 --no-check-certificate -O - https://raw.githubusercontent.com/kcschan/AdditionalAdblock/master/list.txt |
+    wget -4 -O - https://raw.githubusercontent.com/kcschan/AdditionalAdblock/master/list.txt |
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq > adblock.ext.conf
 
@@ -56,11 +56,13 @@ adblock() {
 }
 
 ignore() {
-    wget -4 --no-check-certificate -O ignore.list https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
+    wget -4 -O ignore.list https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
 }
 
 gfwlist() {
-    wget https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o gfw-domains.china.conf
+    # wget -4 -O gfw-domains.china.conf https://cokebar.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf
+    # wget -4 -O gfw-domains.china.conf https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/gh-pages/dnsmasq_gfwlist_ipset.conf
+    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o gfw-domains.china.conf
     rm -rf gfwlist2dnsmasq.sh
 }
 
