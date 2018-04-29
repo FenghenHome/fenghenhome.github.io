@@ -14,7 +14,8 @@ cnlist() {
     # bogus-nxdomain.china.conf
     cat bogus-nxdomain.china.conf bogus-nxdomain.china.ext.conf > file.txt
     rm -rf bogus-nxdomain.china.ext.conf bogus-nxdomain.china.conf
-    mv file.txt bogus-nxdomain.china.conf
+    awk '!x[$0]++' file.txt > bogus-nxdomain.china.conf
+    rm -rf file.txt
     sort -n bogus-nxdomain.china.conf | uniq
     sort -n bogus-nxdomain.china.conf | awk '{if($0!=line)print; line=$0}'
     sort -n bogus-nxdomain.china.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
@@ -23,7 +24,8 @@ cnlist() {
     cat google.china.conf apple.china.conf > china.conf
     cat accelerated-domains.china.conf china.conf > file.txt
     rm -rf google.china.conf apple.china.conf accelerated-domains.china.conf china.conf
-    mv file.txt accelerated-domains.china.conf
+    awk '!x[$0]++' file.txt > accelerated-domains.china.conf
+    rm -rf file.txt
     sort -n accelerated-domains.china.conf | uniq
     sort -n accelerated-domains.china.conf | awk '{if($0!=line)print; line=$0}'
     sort -n accelerated-domains.china.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
@@ -41,15 +43,18 @@ adblock() {
     # adblock-domains.china.conf
     cat adblock-domains.china.conf adblock.ext.conf > file.txt
     rm -rf adblock-domains.china.conf adblock.ext.conf
-    mv file.txt adblock-domains.china.conf
+    awk '!x[$0]++' file.txt > adblock-domains.china.conf
+    rm -rf file.txt
     bash blockad.sh
     cat adblock-domains.china.conf blockad.conf > file.txt
     rm -rf adblock-domains.china.conf blockad.conf
-    mv file.txt adblock-domains.china.conf
+    awk '!x[$0]++' file.txt > adblock-domains.china.conf
+    rm -rf file.txt
     bash mwsl.sh
     cat adblock-domains.china.conf mal-hostlist.conf > file.txt
     rm -rf adblock-domains.china.conf mal-hostlist.conf
-    mv file.txt adblock-domains.china.conf
+    awk '!x[$0]++' file.txt > adblock-domains.china.conf
+    rm -rf file.txt
     sort -n adblock-domains.china.conf | uniq
     sort -n adblock-domains.china.conf | awk '{if($0!=line)print; line=$0}'
     sort -n adblock-domains.china.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
