@@ -2459,7 +2459,7 @@
 			position: absolute;
 			left: 0;
 			top: 0;
-			background-image: url("https://ooo.0o0.ooo/2016/12/24/585e04ad19d31.png");
+			background-image: url("https://i.loli.net/2016/12/24/585e04ad19d31.png");
 			width: 100%;
 			height: 100%;
 			z-index: 1;
@@ -2938,7 +2938,7 @@
 		}
 
 		.spotlight:before {
-			background-image: url("https://ooo.0o0.ooo/2016/12/24/585e04ad19d31.png");
+			background-image: url("https://i.loli.net/2016/12/24/585e04ad19d31.png");
 			content: '';
 			display: block;
 			height: 100%;
@@ -3333,7 +3333,7 @@
 	#banner {
 		background-attachment: fixed;
 		background-color: #272833;
-		background-image: url("https://ooo.0o0.ooo/2016/12/24/585df9cd30dfb.jpg");
+		background-image: url("https://i.loli.net/2016/12/24/585df9cd30dfb.jpg");
 		background-position: center center;
 		background-size: cover;
 		box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
@@ -3352,10 +3352,10 @@
 		}
 
 		#banner:after {
-			background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://ooo.0o0.ooo/2016/12/24/585e04ad19d31.png");;
-			background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://ooo.0o0.ooo/2016/12/24/585e04ad19d31.png");;
-			background-image: -ms-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://ooo.0o0.ooo/2016/12/24/585e04ad19d31.png");;
-			background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://ooo.0o0.ooo/2016/12/24/585e04ad19d31.png");;
+			background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://i.loli.net/2016/12/24/585e04ad19d31.png");;
+			background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://i.loli.net/2016/12/24/585e04ad19d31.png");;
+			background-image: -ms-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://i.loli.net/2016/12/24/585e04ad19d31.png");;
+			background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("https://i.loli.net/2016/12/24/585e04ad19d31.png");;
 			content: '';
 			display: block;
 			height: 100%;
