@@ -9,7 +9,7 @@ cnlist() {
     wget -4 -O ignore-ips.china.conf https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
 
     # DNS:https://puredns.cn、https://pdomo.me、http://aixyz.com、http://www.fundns.cn、https://www.onedns.net、https://baidns.cn
-    sed -i "s/114.114.114.114/123.207.137.88/g" *.conf
+    sed -i "s/114.114.114.114/123.207.13.111/g" *.conf
 
     # bogus-nxdomain.china.conf
     cat bogus-nxdomain.china.conf bogus-nxdomain.china.ext.conf > file.txt
