@@ -6,7 +6,8 @@ cnlist() {
     wget -4 -O bogus-nxdomain.china.ext.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf
     wget -4 -O google.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
     wget -4 -O apple.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
-    wget -4 -O ignore-ips.china.conf https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
+    # china_ipv4_ipv6_list：https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ipv4_ipv6_list
+    wget -4 -O ignore-ips.china.conf https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ipv4_list
 
     # DNS:https://puredns.cn、https://pdomo.me、http://aixyz.com、http://www.fundns.cn、https://www.onedns.net、https://baidns.cn
     sed -i "s/114.114.114.114/123.207.13.111/g" *.conf
@@ -61,7 +62,8 @@ adblock() {
 }
 
 ignore() {
-    wget -4 -O ignore.list https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ip_list
+    # china_ipv4_ipv6_list：https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ipv4_ipv6_list
+    wget -4 -O ignore.list https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ipv4_list
 }
 
 gfwlist() {
