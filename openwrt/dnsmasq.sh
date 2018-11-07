@@ -49,9 +49,19 @@ adblock() {
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq >> adblock.ext.conf
 
+    wget -4 -O union.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/union.conf
+    sed -i "s/0.0.0.0/127.0.0.1/g" union.conf
+    sed -i '/#/d' union.conf
+    sed -i '/^$/d' union.conf
+    sed -i "s/address\=\/\./address\=\//g" union.conf
+
     # adblock-domains.china.conf
     cat adblock-domains.china.conf adblock.ext.conf > file.txt
     rm -rf adblock-domains.china.conf adblock.ext.conf
+    awk '!x[$0]++' file.txt > adblock-domains.china.conf
+    rm -rf file.txt
+    cat adblock-domains.china.conf union.conf > file.txt
+    rm -rf adblock-domains.china.conf union.conf
     awk '!x[$0]++' file.txt > adblock-domains.china.conf
     rm -rf file.txt
     bash blockad.sh
