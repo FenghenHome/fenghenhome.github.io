@@ -41,6 +41,14 @@ adblock() {
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq > adblock.ext.conf
 
+    wget -4 -O - https://easylist-downloads.adblockplus.org/malwaredomains_full.txt |
+    grep ^\|\|[^\*]*\^$ |
+    sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq >> adblock.ext.conf
+
+    wget -4 -O - https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt |
+    grep ^\|\|[^\*]*\^$ |
+    sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq >> adblock.ext.conf
+
     # adblock-domains.china.conf
     cat adblock-domains.china.conf adblock.ext.conf > file.txt
     rm -rf adblock-domains.china.conf adblock.ext.conf
