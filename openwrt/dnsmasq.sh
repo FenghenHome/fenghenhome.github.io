@@ -27,6 +27,10 @@ cnlist() {
     rm -rf google.china.conf apple.china.conf accelerated-domains.china.conf china.conf
     awk '!x[$0]++' file.txt > accelerated-domains.china.conf
     rm -rf file.txt
+    cat accelerated-domains.china.conf mydns.conf > file.txt
+    rm -rf accelerated-domains.china.conf
+    awk '!x[$0]++' file.txt > accelerated-domains.china.conf
+    rm -rf file.txt
     sort -n accelerated-domains.china.conf | uniq
     sort -n accelerated-domains.china.conf | awk '{if($0!=line)print; line=$0}'
     sort -n accelerated-domains.china.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
@@ -78,6 +82,10 @@ adblock() {
     bash mwsl.sh
     cat adblock-domains.china.conf mal-hostlist.conf > file.txt
     rm -rf adblock-domains.china.conf mal-hostlist.conf
+    awk '!x[$0]++' file.txt > adblock-domains.china.conf
+    rm -rf file.txt
+    cat adblock-domains.china.conf myblock.conf > file.txt
+    rm -rf adblock-domains.china.conf
     awk '!x[$0]++' file.txt > adblock-domains.china.conf
     rm -rf file.txt
     sort -n adblock-domains.china.conf | uniq
