@@ -55,6 +55,8 @@ adblock() {
     sed -i '/^$/d' union.conf
     sed -i "s/address\=\/\./address\=\//g" union.conf
 
+    wget -4 -O ad.conf http://iytc.net/tools/ad.conf
+
     # adblock-domains.china.conf
     cat adblock-domains.china.conf adblock.ext.conf > file.txt
     rm -rf adblock-domains.china.conf adblock.ext.conf
@@ -62,6 +64,10 @@ adblock() {
     rm -rf file.txt
     cat adblock-domains.china.conf union.conf > file.txt
     rm -rf adblock-domains.china.conf union.conf
+    awk '!x[$0]++' file.txt > adblock-domains.china.conf
+    rm -rf file.txt
+    cat adblock-domains.china.conf ad.conf > file.txt
+    rm -rf adblock-domains.china.conf ad.conf
     awk '!x[$0]++' file.txt > adblock-domains.china.conf
     rm -rf file.txt
     bash blockad.sh
