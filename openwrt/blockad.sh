@@ -13,8 +13,8 @@ rm ${HOSTS} 2> /dev/null
 for URL in \
     "https://raw.githubusercontent.com/vokins/yhosts/master/hosts" \
     "https://raw.githubusercontent.com/neoFelhz/neohosts/gh-pages/full/hosts" \
-    "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
-    "http://adaway.org/hosts.txt"
+    "https://www.malwaredomainlist.com/hostslist/hosts.txt" \
+    "https://adaway.org/hosts.txt"
 do
     # filter out comment lines, empty lines, localhost... 
     # remove trailing comments, space( ,tab), empty line
