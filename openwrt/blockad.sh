@@ -14,6 +14,7 @@ for URL in \
     "https://raw.githubusercontent.com/vokins/yhosts/master/hosts" \
     "https://raw.githubusercontent.com/neoFelhz/neohosts/gh-pages/full/hosts" \
     "https://www.malwaredomainlist.com/hostslist/hosts.txt" \
+    "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts" \
     "https://adaway.org/hosts.txt"
 do
     # filter out comment lines, empty lines, localhost... 
