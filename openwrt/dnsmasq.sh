@@ -41,11 +41,11 @@ adblock() {
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq > adblock-domains.china.conf
 
-    wget -4 -O - https://raw.githubusercontent.com/kcschan/AdditionalAdblock/master/list.txt |
+    wget -4 -O - https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt |
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq > adblock.ext.conf
 
-    wget -4 -O - https://easylist-downloads.adblockplus.org/malwaredomains_full.txt |
+    wget -4 -O - https://easylist-downloads.adblockplus.org/easyprivacy.txt |
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq >> adblock.ext.conf
 
@@ -77,11 +77,6 @@ adblock() {
     bash blockad.sh
     cat adblock-domains.china.conf blockad.conf > file.txt
     rm -rf adblock-domains.china.conf blockad.conf
-    awk '!x[$0]++' file.txt > adblock-domains.china.conf
-    rm -rf file.txt
-    bash mwsl.sh
-    cat adblock-domains.china.conf mal-hostlist.conf > file.txt
-    rm -rf adblock-domains.china.conf mal-hostlist.conf
     awk '!x[$0]++' file.txt > adblock-domains.china.conf
     rm -rf file.txt
     cat adblock-domains.china.conf myblock.conf > file.txt
