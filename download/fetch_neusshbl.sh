@@ -4,7 +4,7 @@
 
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
-URL=https://www.114rom.com/download/neu_sshbl_hosts.deny.gz
+URL=http://antivirus.neu.edu.cn/ssh/lists/neu_sshbl_hosts.deny.gz
 HOSTSDENY=/etc/hosts.deny
 TMP_DIR=/dev/shm
 FILE=hosts.deny
@@ -13,7 +13,7 @@ FILE=hosts.deny
 
 cd $TMP_DIR
 
-curl --insecure --connect-timeout 60 $URL 2> /dev/null | gzip -dc > $FILE 2> /dev/null
+curl --connect-timeout 60 $URL 2> /dev/null | gzip -dc > $FILE 2> /dev/null
 
 LINES=`grep "^sshd:" $FILE | wc -l`
 
