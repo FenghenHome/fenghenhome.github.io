@@ -4,7 +4,7 @@
 
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
-URL=http://antivirus.neu.edu.cn/ssh/lists/neu_sshbl_hosts.deny.gz
+URL=https://github.com/FenghenHome/www.114rom.com/raw/master/download/neu_sshbl_hosts.deny.gz
 HOSTSDENY=/etc/hosts.deny
 TMP_DIR=/dev/shm
 FILE=hosts.deny
