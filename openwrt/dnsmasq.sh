@@ -86,6 +86,7 @@ adblock() {
     sort -n adblock-domains.china.conf | uniq
     sort -n adblock-domains.china.conf | awk '{if($0!=line)print; line=$0}'
     sort -n adblock-domains.china.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
+    sed -i '/\/m\.baidu\.com\/127/d' adblock-domains.china.conf
 }
 
 ignore() {
@@ -100,7 +101,14 @@ gfwlist() {
     rm -rf gfwlist2dnsmasq.sh
 }
 
+pushcommit() {
+    git add -A
+	git commit -m "Update *.conf"
+	#git push -u origin master
+}
+
 cnlist
 adblock
 ignore
 gfwlist
+pushcommit
