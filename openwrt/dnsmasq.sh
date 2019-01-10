@@ -103,8 +103,8 @@ gfwlist() {
 
 pushcommit() {
     git add -A
-	git commit -m "Update *.conf"
-	#git push -u origin master
+    git commit -m "Update *.conf"
+    git push -u origin master
 }
 
 cnlist
