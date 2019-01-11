@@ -101,7 +101,14 @@ gfwlist() {
     rm -rf gfwlist2dnsmasq.sh
 }
 
+pushcommit() {
+    git add -A
+    git commit -m "Update *.conf"
+    git push origin master
+}
+
 cnlist
 adblock
 ignore
 gfwlist
+pushcommit
