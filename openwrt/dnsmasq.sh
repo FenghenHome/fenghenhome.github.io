@@ -1,4 +1,4 @@
-#!/bin/sh
+
 rm -rf accelerated-domains.china.conf bogus-nxdomain.china.conf adblock-domains.china.conf ignore-ips.china.conf gfw-domains.china.conf ignore.list
 cnlist() {
     wget -4 -O accelerated-domains.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
@@ -102,7 +102,7 @@ gfwlist() {
 }
 
 pushcommit() {
-    git add -A .
+    git add -A
     git commit -m "Update *.conf"
     git push origin master
 }
