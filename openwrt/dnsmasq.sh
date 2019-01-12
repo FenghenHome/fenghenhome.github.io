@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf accelerated-domains.china.conf bogus-nxdomain.china.conf adblock-domains.china.conf ignore-ips.china.conf gfw-domains.china.conf gfw-domains.china.ubuntu.conf ignore.list
+rm -rf accelerated-domains.china.conf bogus-nxdomain.china.conf adblock-domains.china.conf ignore-ips.china.conf gfw-domains.china.conf gfw-domains.china.ubuntu.conf gfw-domains.china.ubuntu.noipset.conf ignore.list
 cnlist() {
     wget -4 -O accelerated-domains.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
     wget -4 -O bogus-nxdomain.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
@@ -97,7 +97,7 @@ ignore() {
 gfwlist() {
     # wget -4 -O gfw-domains.china.conf https://cokebar.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf
     # wget -4 -O gfw-domains.china.conf https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/gh-pages/dnsmasq_gfwlist_ipset.conf
-    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o gfw-domains.china.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -s gfwlist -o gfw-domains.china.ubuntu.conf
+    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o gfw-domains.china.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -s gfwlist -o gfw-domains.china.ubuntu.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -o gfw-domains.china.ubuntu.noipset.conf
     rm -rf gfwlist2dnsmasq.sh
 }
 
