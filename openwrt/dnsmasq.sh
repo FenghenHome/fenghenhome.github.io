@@ -4,7 +4,6 @@ cnlist() {
     wget -4 -O accelerated-domains.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
     wget -4 -O bogus-nxdomain.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
     wget -4 -O bogus-nxdomain.china.ext.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf
-    wget -4 -O google.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
     wget -4 -O apple.china.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
     # china_ipv4_ipv6_list：https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ipv4_ipv6_list
     wget -4 -O ignore-ips.china.conf https://raw.githubusercontent.com/LisonFan/china_ip_list/master/china_ipv4_list
@@ -22,7 +21,8 @@ cnlist() {
     sort -n bogus-nxdomain.china.conf | sed '$!N; /^\(.*\)\n\1$/!P; D'
 
     # accelerated-domains.china.conf
-    cat google.china.conf apple.china.conf > china.conf
+    cat accelerated-domains.china.conf apple.china.conf > file.txt
+    rm -rf apple.china.conf accelerated-domains.china.conf china.conf
     cat accelerated-domains.china.conf china.conf > file.txt
     rm -rf google.china.conf apple.china.conf accelerated-domains.china.conf china.conf
     awk '!x[$0]++' file.txt > accelerated-domains.china.conf
