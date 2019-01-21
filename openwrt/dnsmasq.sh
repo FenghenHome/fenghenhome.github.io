@@ -23,8 +23,6 @@ cnlist() {
     # accelerated-domains.china.conf
     cat accelerated-domains.china.conf apple.china.conf > file.txt
     rm -rf apple.china.conf accelerated-domains.china.conf china.conf
-    cat accelerated-domains.china.conf china.conf > file.txt
-    rm -rf google.china.conf apple.china.conf accelerated-domains.china.conf china.conf
     awk '!x[$0]++' file.txt > accelerated-domains.china.conf
     rm -rf file.txt
     cat accelerated-domains.china.conf mydns.conf > file.txt
