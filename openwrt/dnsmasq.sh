@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf dnsmasq.accelerated-domains.conf dnsmasq.bogus-nxdomain.conf dnsmasq.adblock-domains.conf ignore-ips.china.conf gfw-domains.dnsmasq.conf gfw-domains.dnsmasq.ubuntu.conf ignore.list unbound.gfw-domains.conf overture.gfw-domains.conf overture.accelerated-domains.conf unbound.accelerated-domains.conf dnscrypt-blacklist-ips.conf dnscrypt-blacklist-domains.conf unbound.adblock-domains.conf overture.adblock-domains.conf
+rm -rf dnsmasq.accelerated-domains.conf dnsmasq.bogus-nxdomain.conf dnsmasq.adblock-domains.conf ignore-ips.china.conf dnsmasq.gfw-domains.conf dnsmasq.gfw-domains.googledns.conf ignore.list unbound.gfw-domains.conf overture.gfw-domains.conf overture.accelerated-domains.conf unbound.accelerated-domains.conf dnscrypt-blacklist-ips.conf dnscrypt-blacklist-domains.conf unbound.adblock-domains.conf overture.adblock-domains.conf
 cnlist() {
     wget -4 -O dnsmasq.accelerated-domains.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
     wget -4 -O dnsmasq.bogus-nxdomain.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
@@ -135,14 +135,14 @@ blacklist_ips_dnscrypt() {
 }
 
 gfwlist() {
-    # wget -4 -O gfw-domains.dnsmasq.conf https://cokebar.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf
-    # wget -4 -O gfw-domains.dnsmasq.conf https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/gh-pages/dnsmasq_gfwlist_ipset.conf
-    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o gfw-domains.dnsmasq.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -s gfwlist -o gfw-domains.dnsmasq.ubuntu.conf
+    # wget -4 -O dnsmasq.gfw-domains.conf https://cokebar.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf
+    # wget -4 -O dnsmasq.gfw-domains.conf https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/gh-pages/dnsmasq_gfwlist_ipset.conf
+    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o dnsmasq.gfw-domains.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -s gfwlist -o dnsmasq.gfw-domains.googledns.conf
     rm -rf gfwlist2dnsmasq.sh
 }
 
 gfwlist_overture() {
-    cat gfw-domains.dnsmasq.conf | sed 's/ipset=\///g; s/\/gfwlist//g; /^server/d; /#/d' > overture.gfw-domains.conf
+    cat dnsmasq.gfw-domains.conf | sed 's/ipset=\///g; s/\/gfwlist//g; /^server/d; /#/d' > overture.gfw-domains.conf
 }
 
 gfwlist_unbound() {
