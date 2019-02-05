@@ -25,8 +25,7 @@ cnlist() {
     rm -rf file.txt
     sort -n dnsmasq.accelerated-domains.conf | uniq > file.txt
     sort -n file.txt | awk '{if($0!=line)print; line=$0}' > tmp.txt
-    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' > dnsmasq.accelerated-domains.conf
-    sed -i '/#/d' dnsmasq.accelerated-domains.conf
+    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' | grep -v '[#].*\/' > dnsmasq.accelerated-domains.conf
     rm -rf file.txt tmp.txt
 }
 
@@ -91,7 +90,7 @@ adblock() {
     rm -rf file.txt
     sort -n dnsmasq.adblock-domains.conf | uniq > file.txt
     sort -n file.txt | awk '{if($0!=line)print; line=$0}' > tmp.txt
-    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' > dnsmasq.adblock-domains.conf
+    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' | grep -v '[#].*\/' > dnsmasq.adblock-domains.conf
     sed -i '/\/m\.baidu\.com\/127/d' dnsmasq.adblock-domains.conf
     sed -i "s/\.\//\//g" dnsmasq.adblock-domains.conf
     rm -rf file.txt tmp.txt
@@ -132,8 +131,10 @@ blacklist_ips_dnscrypt() {
 gfwlist() {
     # wget -4 -O dnsmasq.gfw-domains.conf https://cokebar.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf
     # wget -4 -O dnsmasq.gfw-domains.conf https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/gh-pages/dnsmasq_gfwlist_ipset.conf
-    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o dnsmasq.gfw-domains.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -s gfwlist -o dnsmasq.gfw-domains.googledns.conf
-    rm -rf gfwlist2dnsmasq.sh
+    wget -4 -O gfwlist2dnsmasq.sh https://raw.githubusercontent.com/cokebar/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh && chmod +x gfwlist2dnsmasq.sh && bash gfwlist2dnsmasq.sh -s gfwlist -o dnsmasq.gfw-domains.tmp.conf && bash gfwlist2dnsmasq.sh -d 8.8.8.8 -p 53 -s gfwlist -o dnsmasq.gfw-domains.googledns.tmp.conf
+    cat dnsmasq.gfw-domains.tmp.conf | tr -s '\n' | tr A-Z a-z | grep -v '[#].*\/' > dnsmasq.gfw-domains.conf
+    cat dnsmasq.gfw-domains.googledns.tmp.conf | tr -s '\n' | tr A-Z a-z | grep -v '[#].*\/' > dnsmasq.gfw-domains.googledns.conf
+    rm -rf gfwlist2dnsmasq.sh dnsmasq.gfw-domains.tmp.conf dnsmasq.gfw-domains.googledns.tmp.conf
 }
 
 gfwlist_overture() {
