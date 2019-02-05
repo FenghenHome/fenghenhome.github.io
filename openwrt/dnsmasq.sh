@@ -23,19 +23,15 @@ cnlist() {
     rm -rf apple.china.conf dnsmasq.accelerated-domains.conf
     awk '!x[$0]++' file.txt > dnsmasq.accelerated-domains.conf
     rm -rf file.txt
-    cat dnsmasq.accelerated-domains.conf mydns.conf > file.txt
-    rm -rf dnsmasq.accelerated-domains.conf
-    awk '!x[$0]++' file.txt > dnsmasq.accelerated-domains.conf
-    rm -rf file.txt
     sort -n dnsmasq.accelerated-domains.conf | uniq > file.txt
     sort -n file.txt | awk '{if($0!=line)print; line=$0}' > tmp.txt
-    sort -n tmp.txt | sed '$!N; /^\(.*\)\n\1$/!P; D' > dnsmasq.accelerated-domains.conf
+    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' > dnsmasq.accelerated-domains.conf
+    sed -i '/#/d' dnsmasq.accelerated-domains.conf
     rm -rf file.txt tmp.txt
 }
 
 cnlist_overture() {
     cat dnsmasq.accelerated-domains.conf | sed 's/server=\///g; s/\/119.29.29.29//g' > overture.accelerated-domains.conf
-    sed -i '/107.170.15.247/d' overture.accelerated-domains.conf
 }
 
 cnlist_unbound() {
@@ -44,7 +40,6 @@ cnlist_unbound() {
 
 cnlist_dnscrypt() {
     cat dnsmasq.accelerated-domains.conf | grep -v '^#server' | sed -e 's|/| |g' -e 's|^server= ||' | sed 's/119.29.29.29/119.29.107.85,118.24.208.197,47.101.136.37,114.115.240.175/g' >dnscrypt-forwarding-rules.conf
-    sed -i '/107.170.15.247/d' dnscrypt-forwarding-rules.conf
 }
 
 adblock() {
@@ -96,7 +91,7 @@ adblock() {
     rm -rf file.txt
     sort -n dnsmasq.adblock-domains.conf | uniq > file.txt
     sort -n file.txt | awk '{if($0!=line)print; line=$0}' > tmp.txt
-    sort -n tmp.txt | sed '$!N; /^\(.*\)\n\1$/!P; D' > dnsmasq.adblock-domains.conf
+    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' > dnsmasq.adblock-domains.conf
     sed -i '/\/m\.baidu\.com\/127/d' dnsmasq.adblock-domains.conf
     sed -i "s/\.\//\//g" dnsmasq.adblock-domains.conf
     rm -rf file.txt tmp.txt
@@ -116,7 +111,7 @@ adblock_dnscrypt() {
     echo 'ad[0-9]*' >>dnscrypt-blacklist-domains.conf
     echo 'ads.*' >>dnscrypt-blacklist-domains.conf
     echo 'ads[0-9]*' >>dnscrypt-blacklist-domains.conf
-    cat toblock-without-shorturl-optimized.lst | grep -v '^#' | tr -s '\n' | tr A-Z a-z | grep -v '^ad\.' | grep -v -e '^ad[0-9]' | grep -v '^ads\.' | grep -v -e '^ads[0-9]' | rev | sort -n | uniq | rev >>dnscrypt-blacklist-domains.conf
+    cat toblock-without-shorturl-optimized.lst | grep -v '^ad\.' | grep -v -e '^ad[0-9]' | grep -v '^ads\.' | grep -v -e '^ads[0-9]' | rev | sort -n | uniq | rev >>dnscrypt-blacklist-domains.conf
     rm toblock-without-shorturl-optimized.lst
 }
 
@@ -146,7 +141,7 @@ gfwlist_overture() {
 }
 
 gfwlist_unbound() {
-    cat overture.gfw-domains.conf | sed -e 's|\(.*\)|forward-zone:\n  name: "\1."\n  forward-addr: 127.0.0.1@8865\n|' > unbound.gfw-domains.conf
+    cat overture.gfw-domains.conf | sed -e 's|\(.*\)|forward-zone:\n  name: "\1."\n  forward-addr: 127.0.0.1@5355\n|' > unbound.gfw-domains.conf
 }
 
 gfwlist_dnscrypt() {
