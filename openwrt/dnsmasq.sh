@@ -88,8 +88,8 @@ adblock() {
     rm -rf file.txt
     sort -n dnsmasq.adblock-domains.conf | uniq > file.txt
     sort -n file.txt | awk '{if($0!=line)print; line=$0}' > tmp.txt
-    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' | sed '/\/m\.baidu\.com\/127/d' | grep -v '[#].*\/' > dnsmasq.adblock-domains.conf
-    sed -i "s/\.\//\//g" dnsmasq.adblock-domains.conf
+    sort -n tmp.txt | tr -s '\n' | tr A-Z a-z | sed '$!N; /^\(.*\)\n\1$/!P; D' | sed 's/\.\//\//g' | grep -v '[#].*\/' | grep '[.].*\/' > dnsmasq.adblock-domains.conf
+    sed -i "/\/m\.baidu\.com\/127/d" dnsmasq.adblock-domains.conf
     rm -rf file.txt tmp.txt
 }
 
