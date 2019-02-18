@@ -35,7 +35,7 @@ cnlist_overture() {
 }
 
 cnlist_unbound() {
-    cat overture.accelerated-domains.conf | sed -e 's|\(.*\)|forward-zone:\n  name: "\1."\n  forward-addr: 127.0.0.1@8866\n|' > unbound.accelerated-domains.conf
+    cat overture.accelerated-domains.conf | sed -e 's|\(.*\)|forward-zone:\n  name: "\1."\n  forward-tls-upstream: yes\n  forward-addr: 8.8.8.8@853\n|' > unbound.accelerated-domains.conf
 }
 
 cnlist_dnscrypt() {
@@ -142,7 +142,7 @@ gfwlist_overture() {
 }
 
 gfwlist_unbound() {
-    cat overture.gfw-domains.conf | sed -e 's|\(.*\)|forward-zone:\n  name: "\1."\n  forward-addr: 127.0.0.1@5355\n|' > unbound.gfw-domains.conf
+    cat overture.gfw-domains.conf | sed -e 's|\(.*\)|forward-zone:\n  name: "\1."\n  forward-tls-upstream: yes\n  forward-addr: 8.8.8.8@853\n|' > unbound.gfw-domains.conf
 }
 
 gfwlist_dnscrypt() {
