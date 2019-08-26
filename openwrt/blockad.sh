@@ -23,7 +23,7 @@ do
     # append the results to TMP_HOSTS
     wget -4 --no-check-certificate -qO- "${URL}" | grep -v -e "^#" -e "^\s*$" -e "localhost" -e "broadcasthost" -e "ip6" -e "^;" -e "^@" -e "^:" -e "^[a-zA-Z]" \
     | sed -E -e "s/#.*$//" -e "s/[[:space:]]*//g" -e "/^$/d" \
-    -e "s/^127.0.0.1/address=\//" -e "s/0.0.0.0/address=\//" -e "/^[0-9].*$/d" -e "s/$/\/127.0.0.1/" \
+    -e "s/^127.0.0.1/address=\//" -e "s/0.0.0.0/address=\//" -e "/^[0-9].*$/d" -e "s/$/\/0.0.0.0/" \
     | tr -d "\r" >> ${TMP_HOSTS}
 
 done
