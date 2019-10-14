@@ -59,6 +59,10 @@ adblock() {
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq >> adblock.ext.conf
 
+    wget -4 -O - http://tools.yiclear.com/ChinaList2.0.txt |
+    grep ^\|\|[^\*]*\^$ |
+    sed -e 's:||:address\=\/:' -e 's:\^:/127\.0\.0\.1:' | uniq >> adblock.ext.conf
+
     wget -4 -O union.conf https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/union.conf
     sed -i 's/0.0.0.0/127.0.0.1/g; s/address\=\/\./address\=\//g; s/address\=\/\./address\=\//g; /#/d' union.conf
 
