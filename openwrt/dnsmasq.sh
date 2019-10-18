@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf dnsmasq.accelerated-domains.conf dnsmasq.bogus-nxdomain.conf dnsmasq.adblock-domains.conf dnsmasq.adblock-domains.nxdomain.conf ignore-ips.china.conf dnsmasq.gfw-domains.conf ignore.list unbound.gfw-domains.conf overture.gfw-domains.conf overture.accelerated-domains.conf unbound.accelerated-domains.conf dnscrypt-blacklist-ips.conf dnscrypt-blacklist-domains.conf unbound.adblock-domains.conf unbound.adblock-domains.nxdomain.conf overture.adblock-domains.conf dnsmasq.netflix-domains.conf
+rm -rf dnsmasq.accelerated-domains.conf dnsmasq.bogus-nxdomain.conf dnsmasq.adblock-domains.conf dnsmasq.adblock-domains.nxdomain.conf ignore-ips.china.conf dnsmasq.gfw-domains.conf ignore.list unbound.gfw-domains.conf overture.gfw-domains.conf overture.accelerated-domains.conf unbound.accelerated-domains.conf dnscrypt-blacklist-ips.conf dnscrypt-blacklist-domains.conf unbound.adblock-domains.conf unbound.adblock-domains.nxdomain.conf overture.adblock-domains.conf dnsmasq.netflix-domains.conf adguardhome.gfw-domains.conf
 cnlist() {
     wget -4 -O dnsmasq.accelerated-domains.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
     wget -4 -O dnsmasq.bogus-nxdomain.conf https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/bogus-nxdomain.china.conf
