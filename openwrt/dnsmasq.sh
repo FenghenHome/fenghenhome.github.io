@@ -153,6 +153,10 @@ gfwlist_dnscrypt() {
     wget -4 -O dnscrypt-cloaking-rules.conf https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/dnscrypt-proxy-cloaking.txt
 }
 
+gfwlist_adguardhome() {
+    cat overture.gfw-domains.conf | sed -e 's|\(.*\)|[/\1/]8.8.8.8:53|' > adguardhome.gfw-domains.conf
+}
+
 netflix() {
     wget -4 -O - https://raw.githubusercontent.com/ab77/netflix-proxy/master/proxy-domains.txt | sed -e 's|\(.*\)|server=/\1/127.0.0.1#5353\nipset=/\1/gfwlist|' | tr -s '\n' | tr A-Z a-z | grep -v '[#].*\/' > dnsmasq.netflix-domains.conf
 }
@@ -177,5 +181,6 @@ gfwlist
 gfwlist_overture
 gfwlist_unbound
 gfwlist_dnscrypt
+gfwlist_adguardhome
 netflix
 #pushcommit
