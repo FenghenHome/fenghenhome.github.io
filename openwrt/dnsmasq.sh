@@ -63,6 +63,18 @@ adblock() {
     grep ^\|\|[^\*]*\^$ |
     sed -e 's:||:address\=\/:' -e 's:\^:/0\.0\.0\.0:' | uniq >> adblock.ext.conf
 
+    wget -4 -O - https://gitee.com/halflife/list/raw/master/ad.txt |
+    grep ^\|\|[^\*]*\^$ |
+    sed -e 's:||:address\=\/:' -e 's:\^:/0\.0\.0\.0:' | uniq >> adblock.ext.conf
+
+    wget -4 -O - https://gitee.com/banbendalao/adguard/raw/master/ADgk.txt |
+    grep ^\|\|[^\*]*\^$ |
+    sed -e 's:||:address\=\/:' -e 's:\^:/0\.0\.0\.0:' | uniq >> adblock.ext.conf
+
+    wget -4 -O - https://raw.githubusercontent.com/adbyby/xwhyc-rules/master/lazy.txt |
+    grep ^\|\|[^\*]*\^$ |
+    sed -e 's:||:address\=\/:' -e 's:\^:/0\.0\.0\.0:' | uniq >> adblock.ext.conf
+
     wget -4 -O - https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/union.conf |
     sed -e 's/address\=\/\./address\=\//g; s/address\=\/\./address\=\//g; /#/d' > union.conf
 
