@@ -14,7 +14,8 @@ for URL in \
     "https://raw.githubusercontent.com/vokins/yhosts/master/hosts" \
     "https://raw.githubusercontent.com/neoFelhz/neohosts/gh-pages/full/hosts" \
     "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts" \
-    "https://raw.githubusercontent.com/kcschan/AdditionalAdblock/master/blacklisthosts"
+    "https://raw.githubusercontent.com/kcschan/AdditionalAdblock/master/blacklisthosts" \
+    "https://raw.githubusercontent.com/otobtc/ADhosts/master/hosts"
 do
     # filter out comment lines, empty lines, localhost... 
     # remove trailing comments, space( ,tab), empty line
